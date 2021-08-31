@@ -3,12 +3,6 @@ import os
 from colorama import Fore, init
 
 
-def Clear():
-    os.system("cls" if os.name == "nt" else "clear")
-
-
-Clear()
-
 init()
 username = input(f'{Fore.LIGHTMAGENTA_EX}Username: {Fore.RESET}')
 email = input(f'{Fore.LIGHTMAGENTA_EX}Email: {Fore.RESET}')
@@ -46,9 +40,17 @@ resp = requests.post("https://spclient.wg.spotify.com/signup/public/v1/account",
 }).json()
 
 if "\"login_token\"" in resp:
+    os.system("cls" if os.name == "nt" else "clear")
     print(f'{Fore.LIGHTGREEN_EX}Account Created\nLogin: {Fore.LIGHTBLUE_EX}{username}:{Fore.LIGHTBLACK_EX}{password}')
+    os.system("pause" if os.name ==
+              "nt" else "read -p \"Press any key to resume ...\"")
 elif "That email is already" in resp:
+    os.system("cls" if os.name == "nt" else "clear")
     print(f'{Fore.LIGHTRED_EX}You got a error! Please try using other email')
+    os.system("pause" if os.name ==
+              "nt" else "read -p \"Press any key to resume ...\"")
 else:
+    os.system("cls" if os.name == "nt" else "clear")
     print(f'{Fore.LIGHTRED_EX}You got a error! please open issue on GitHub or try with other name and/or disable proxy/VPN')
-    
+    os.system("pause" if os.name ==
+              "nt" else "read -p \"Press any key to resume ...\"")
