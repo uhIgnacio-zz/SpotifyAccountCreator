@@ -39,7 +39,6 @@ resp = requests.post("https://spclient.wg.spotify.com/signup/public/v1/account",
     "referrer-policy": "strict-origin-when-cross-origin"
 })
 
-resp = requests.post('https://spclient.wg.spotify.com/signup/public/v1/account', data=data)
 if "login_token" in resp.text:
     print(f'{Fore.LIGHTGREEN_EX}Account Created\nLogin: {Fore.LIGHTBLUE_EX}{username}:{Fore.LIGHTBLACK_EX}{password}\nResponse: {resp.text}')
     pse()
