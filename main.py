@@ -37,20 +37,20 @@ resp = requests.post("https://spclient.wg.spotify.com/signup/public/v1/account",
     "sec-gpc": "1",
     "referer": "https://www.spotify.com/",
     "referrer-policy": "strict-origin-when-cross-origin"
-}).json()
+})
 
 if "\"login_token\"" in resp:
     os.system("cls" if os.name == "nt" else "clear")
-    print(f'{Fore.LIGHTGREEN_EX}Account Created\nLogin: {Fore.LIGHTBLUE_EX}{username}:{Fore.LIGHTBLACK_EX}{password}')
+    print(f'{Fore.LIGHTGREEN_EX}Account Created\nLogin: {Fore.LIGHTBLUE_EX}{username}:{Fore.LIGHTBLACK_EX}{password}\nResponse: {resp.text}')
     os.system("pause" if os.name ==
               "nt" else "read -p \"Press any key to resume ...\"")
 elif "That email is already" in resp:
     os.system("cls" if os.name == "nt" else "clear")
-    print(f'{Fore.LIGHTRED_EX}You got a error! Please try using other email')
+    print(f'{Fore.LIGHTRED_EX}You got a error! Please try using other email\nResponse: {resp.text}')
     os.system("pause" if os.name ==
               "nt" else "read -p \"Press any key to resume ...\"")
 else:
     os.system("cls" if os.name == "nt" else "clear")
-    print(f'{Fore.LIGHTRED_EX}You got a error! please open issue on GitHub or try with other name and/or disable proxy/VPN')
+    print(f'{Fore.LIGHTRED_EX}You got a error! please open issue on GitHub or try with other name and/or disable proxy/VPN\nResponse: {resp.text}')
     os.system("pause" if os.name ==
               "nt" else "read -p \"Press any key to resume ...\"")
