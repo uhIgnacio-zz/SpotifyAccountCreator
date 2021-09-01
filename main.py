@@ -40,7 +40,7 @@ resp = requests.post("https://spclient.wg.spotify.com/signup/public/v1/account",
 })
 
 if "login_token" in resp.text:
-    print(f'{Fore.LIGHTGREEN_EX}Account Created\nLogin: {Fore.LIGHTBLUE_EX}{username}:{Fore.LIGHTBLACK_EX}{password}\nResponse: {resp.text}')
+    print(f'{Fore.LIGHTGREEN_EX}Account Created\nLogin: {Fore.LIGHTMAGENTA_EX}{username}:{Fore.LIGHTMAGENTA_EX}{password}\nResponse: {resp.text}')
     pse()
 
 elif "That email is already" or "Invalid Email" in resp.text:
