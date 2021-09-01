@@ -1,27 +1,27 @@
-import requests
-import os
+import requests, os
 from colorama import Fore, init
-
-
+def pse():
+    os.system('pause')
+pse()
 init()
 username = input(f'{Fore.LIGHTMAGENTA_EX}Username: {Fore.RESET}')
 email = input(f'{Fore.LIGHTMAGENTA_EX}Email: {Fore.RESET}')
 password = input(f'{Fore.LIGHTMAGENTA_EX}Password: {Fore.RESET}')
 
 resp = requests.post("https://spclient.wg.spotify.com/signup/public/v1/account", data={
-    "birth_day": "29",
-    "birth_month": "06",
-    "birth_year": "2000",
+    "birth_day": "1",
+    "birth_month": "01",
+    "birth_year": "1970",
     "collect_personal_info": "undefined",
     "creation_flow": "",
-    "creation_point": "https://www.spotify.com/cl/",
+    "creation_point": "https://www.spotify.com/uk/",
     "displayname": username,
     "username": username,
     "gender": "neutral",
     "iagree": "1",
     "key": "a1e486e2729f46d6bb368d6b2bcda326",
     "platform": "www",
-    "referrer": "",
+    "referrer": "https://www.spotify.com/uk/",
     "send-email": "0",
     "thirdpartyemail": "0",
     "email": email,
@@ -39,18 +39,15 @@ resp = requests.post("https://spclient.wg.spotify.com/signup/public/v1/account",
     "referrer-policy": "strict-origin-when-cross-origin"
 })
 
-if "\"login_token\"" in resp:
-    os.system("cls" if os.name == "nt" else "clear")
+resp = requests.post('https://spclient.wg.spotify.com/signup/public/v1/account', data=data)
+if "login_token" in resp.text:
     print(f'{Fore.LIGHTGREEN_EX}Account Created\nLogin: {Fore.LIGHTBLUE_EX}{username}:{Fore.LIGHTBLACK_EX}{password}\nResponse: {resp.text}')
-    os.system("pause" if os.name ==
-              "nt" else "read -p \"Press any key to resume ...\"")
-elif "That email is already" in resp:
-    os.system("cls" if os.name == "nt" else "clear")
-    print(f'{Fore.LIGHTRED_EX}You got a error! Please try using other email\nResponse: {resp.text}')
-    os.system("pause" if os.name ==
-              "nt" else "read -p \"Press any key to resume ...\"")
+    pse()
+
+elif "That email is already" or "Invalid Email" in resp.text:
+    print(f'{Fore.LIGHTRED_EX}You got an error! Please try using a different email\nResponse: {resp.text}')
+    pse()
+
 else:
-    os.system("cls" if os.name == "nt" else "clear")
-    print(f'{Fore.LIGHTRED_EX}You got a error! please open issue on GitHub or try with other name and/or disable proxy/VPN\nResponse: {resp.text}')
-    os.system("pause" if os.name ==
-              "nt" else "read -p \"Press any key to resume ...\"")
+    print(f'{Fore.LIGHTRED_EX}You got an error! Try with a different username and/or disable your proxy/VPN. If that doesn\'t work, please open issue on GitHub \nResponse: {resp.text} \n {resp.status_code}')
+    pse()
