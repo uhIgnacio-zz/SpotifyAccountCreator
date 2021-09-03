@@ -29,7 +29,7 @@ resp = requests.post("https://spclient.wg.spotify.com/signup/public/v1/account",
     "password_repeat": password
 }, headers={
     "accept": "*/*",
-    "accept-language": "es-419,es;q=0.9",
+    "accept-language": "en-uk,en;q=0.9",
     "content-type": "application/x-www-form-urlencoded",
     "sec-fetch-dest": "empty",
     "sec-fetch-mode": "cors",
