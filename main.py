@@ -39,17 +39,14 @@ resp = requests.post("https://spclient.wg.spotify.com/signup/public/v1/account",
     "referrer-policy": "strict-origin-when-cross-origin"
 })
 
-jsonr = resp.json()
-errormsg = jsonr['errors']
-
 if "login_token" in resp.text:
     print(f'{Fore.LIGHTGREEN_EX}Account Created\nLogin: {Fore.LIGHTMAGENTA_EX}{username}:{Fore.LIGHTMAGENTA_EX}{password}\nResponse: {resp.text}')
     pse()
 
 elif "That email is already" or "Invalid Email" in resp.text:
-    print(f'{Fore.LIGHTRED_EX}You got an error! \nError: {errormsg} \nResponse: {resp.text}')
+    print(f'{Fore.LIGHTRED_EX}You got an error! Please try using a different email\nResponse: {resp.text}')
     pse()
 
 else:
-    print(f'{Fore.LIGHTRED_EX}You got an error! Try with a different username and/or disable your proxy/VPN. If that doesn\'t work, please open issue on GitHub \nError: {errormsg} \nResponse: {resp.text} \n {resp.status_code}')
+    print(f'{Fore.LIGHTRED_EX}You got an error! Try with a different username and/or disable your proxy/VPN. If that doesn\'t work, please open issue on GitHub \nResponse: {resp.text} \n {resp.status_code}')
     pse()
