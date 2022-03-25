@@ -55,3 +55,4 @@ elif "That email is already" or "Invalid Email" in resp.text:
 else:
     print(f'{Fore.LIGHTRED_EX}You got an error! Try with a different username and/or disable your proxy/VPN. If that doesn\'t work, please open issue on GitHub \nResponse: {resp.text} \n {resp.status_code}')
     exit()
+
